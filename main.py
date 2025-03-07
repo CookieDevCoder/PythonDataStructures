@@ -24,6 +24,8 @@ from functions import (
     compare_sequences
 )
 
+print(" * Tuples and Sequences Tests *\n")
+
 # Creates a tuple (3, 6, 2, 2, 5)
 testtuple = create_tuple(3, 6, 2, 2, 5)
 print("Created Tuple: " + str(testtuple) + " | Passed = " + str(testtuple == tuple((3, 6, 2, 2, 5))))
@@ -40,6 +42,9 @@ print("Tuple Details: " + str(tupledetails) + " | Passed = " + str(tupledetails 
 # Creates a Dict with length = 0, First = None, Last = None
 emptydetails = tuple_details(tuple())
 print("Empty Tuple Details: " + str(emptydetails) + " | Passed = " + str(emptydetails == {'length' : 0, 'first' : None, 'last' : None}))
+
+
+print("\n * Set Operations Tests *\n")
 
 # Create a set {7, 2, 3, 4, 1}
 testset = create_set([7, 2, 3, 4, 1, 3])
@@ -63,17 +68,20 @@ print("Set Symmetrical Difference: " + str(setopdict['symmetric_difference']) + 
 uniquelst = unique_sorted(testlst)
 print("Unique Sorted testlst: " + str(uniquelst) + " | Passed = " + str(uniquelst == [2, 3, 5, 6]))
 
+
+print("\n * Dictionary Operations Tests *\n")
+
 # Create Dictionary { 'Name' : "Brian", 'Age' : 19, 'Major' : "Computer Science"}
 personinfo = create_dictionary(tuple((('Name', "Brian"), ('Age', 19), ('Major', "Computer Science"))))
 print("Created personal info Dictionary: " + str(personinfo) + " | Passed = " + str(personinfo == { 'Name' : "Brian", 'Age' : 19, 'Major' : "Computer Science"}))
 
 # Update person Info from age 19 to age 20 'Age' = "20"
 updatedpersoninfo = update_dictionary(personinfo, 'Age', "20")
-print("Created personal info Dictionary: " + str(updatedpersoninfo) + " | Passed = " + str(updatedpersoninfo == { 'Name' : "Brian", 'Age' : 20, 'Major' : "Computer Science"}))
+print("Updated age in personal info Dictionary: " + str(updatedpersoninfo) + " | Passed = " + str(updatedpersoninfo == { 'Name' : "Brian", 'Age' : 20, 'Major' : "Computer Science"}))
 
 # Delete Age from person Info
 deletedpersoninfo = delete_key(updatedpersoninfo, 'Age')
-print("Created personal info Dictionary: " + str(deletedpersoninfo) + " | Passed = " + str(deletedpersoninfo == { 'Name' : "Brian", 'Major' : "Computer Science"}))
+print("deleted age in personal info Dictionary: " + str(deletedpersoninfo) + " | Passed = " + str(deletedpersoninfo == { 'Name' : "Brian", 'Major' : "Computer Science"}))
 
 # Test Case: Delete 'University', which does not exist
 try :
@@ -84,6 +92,9 @@ except KeyError :
 # Convert list [2, 7, "Hello", 3, "World"] to { 2 : 4, 7 : 49, "Hello" : 5, 3 : 9, "World" : 5}
 dictcomprehension = dict_comprehension_example([2, 7, "Hello", 3, "World"])
 print("Created personal info Dictionary: " + str(dictcomprehension) + " | Passed = " + str(dictcomprehension == { 2 : 4, 7 : 49, "Hello" : 5, 3 : 9, "World" : 5}))
+
+
+print("\n * Looping Teqniques Tests *\n")
 
 # Format person into to list of strings conatining ["Name: Brian", "Major: Computer Science"]
 listdicts = iterate_dictionary(deletedpersoninfo)
@@ -101,6 +112,9 @@ print("Zip List : " + str(NumbersList) + " | Passed = " + str(NumbersList == [("
 reversetestlst, sortedtestlst = reverse_and_sort(testlst)
 print("Reverse List : " + str(reversetestlst) + " | Passed = " + str(reversetestlst == [5, 2, 2, 6, 3]))
 print("Sorted List : " + str(sortedtestlst) + " | Passed = " + str(sortedtestlst == [2, 2, 3, 5, 6]))
+
+
+print("\n * Conditions and Sequences Comparison Tests *\n")
 
 # Check if 5 is in testlst, it is (True)
 contains5 = check_membership(testlst, 5)
