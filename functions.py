@@ -31,9 +31,14 @@ def tuple_details(t = tuple()) :
     Return :
     A dictionary with keys suck as 'length', 'first', and 'last'.
     '''
-    length = len(t)
-    firstElement = t[0]
-    LastElement = t[length-1]
+    if (not t) :
+        length = 0
+        firstElement = None
+        LastElement = None
+    else :
+        length = len(t)
+        firstElement = t[0]
+        LastElement = t[length-1]
     return {'length' : length, 'first' : firstElement, 'last' : LastElement}
 
 def create_set(iterable) :
@@ -117,7 +122,7 @@ def delete_key (d, key) :
     The dictionary after removal of the key, or an error message if the key is not found.
     '''
     if d.get(key) == None :
-        return "Key does not exist"
+        raise KeyError("Key does not exist")
     d.pop(key)
     return d
 
@@ -170,7 +175,7 @@ def iterate_dictionary (d = dict()) :
     '''
     lst = list()
     for x in d.keys() :
-        lst.append(x + ": " + d[x])
+        lst.append(str(x) + ": " + str(d[x]))
     
     return lst
 
@@ -186,7 +191,7 @@ def enumerate_list (lst = list()) :
     tuplst = list()
     i = 0
     for x in lst :
-        tuplst.append(tuple(i, x))
+        tuplst.append(tuple((i, x)))
         i += 1
     
     return tuplst
@@ -203,12 +208,12 @@ def zip_lists (lst1 = list(), lst2 = list()) :
     A list of tuples, each containing one element from lst1 and the corresponding element from lst2.
     '''
     tuplst = list()
-    for x in range(0, len(lst1) - 1) :
-        tuplst.append(tuple(lst1[x], lst2[x]))
+    for x in range(0, len(lst1)) :
+        tuplst.append(tuple((lst1[x], lst2[x])))
     
     return tuplst
 
-def reverse_and_sort (lst = list()) :
+def reverse_and_sort(lst) :
     '''
     Description:
     Return both a reversed version of the list and a sorted version of the list.
@@ -219,9 +224,7 @@ def reverse_and_sort (lst = list()) :
     - The first is the reversed list.
     - The second is the sorted list.
     '''
-    rlst = lst.reverse()
-    slst = lst.sort()
-    return tuple(rlst, slst)
+    return (lst[::-1], sorted(lst))
 
 def check_membership (sequence, value) :
     '''
@@ -277,12 +280,10 @@ def compare_sequences (seq1, seq2) :
     0 if they are equal;
     1 if seq1 is greater than seq2.
     '''
-    sseq1 = seq1.sort()
-    sseq2 = seq2.sort()
-    for x in range(0, len(seq1) - 1) :
-        if sseq1[x] < sseq2[x] :
+    for x in range(0, len(seq1)) :
+        if seq1[x] < seq2[x] :
             return -1
-        elif sseq2[x] < sseq1[x] :
+        elif seq2[x] < seq1[x] :
             return 1
     
     return 0
